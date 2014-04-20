@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="everypony.tabun.auth"
+          android:versionCode="1"
+          android:versionName="Doctor Whooves 0.0.1">
+
+    <uses-sdk android:minSdkVersion="5"/>
+
+    <application android:label="@string/label"
+                 android:icon="@drawable/icon">
+
+        <activity android:name=".AuthActivity"
+                  android:label="@string/label"
+                  android:exported="true"
+                />
+
+
+
+    </application>
+
+</manifest>
