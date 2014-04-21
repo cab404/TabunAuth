@@ -9,11 +9,15 @@
     <application android:label="@string/label"
                  android:icon="@drawable/icon">
 
-        <activity android:name=".TabunAuthActivity"
-                  android:label="@string/label"
+        <activity android:name=".TabunAccountSelector"
                   android:exported="true"
                 />
 
+        <activity android:name=".TabunAuthActivity"
+                  android:label="@string/label"
+                />
+
+        <activity android:name=".TabunTokenGetterActivity"/>
 
         <service
                 android:permission="android.permission.AUTHENTICATE_ACCOUNTS"

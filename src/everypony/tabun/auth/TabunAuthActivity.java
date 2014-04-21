@@ -134,8 +134,8 @@ public class TabunAuthActivity extends Activity {
         if (man == null)
             throw new RuntimeException("Account manager is unavailable!");
 
-        Account account = new Account(data.login, TabunAuthService.ACCOUNT_TYPE);
+        Account account = new Account(data.login, TabunAccount.TYPE);
         man.addAccountExplicitly(account, data.password, null);
-        man.setAuthToken(account, TabunAuthService.COOKIE_TOKEN_TYPE, data.profile.serialize());
+        man.setAuthToken(account, TabunAccount.COOKIE_TOKEN_TYPE, data.profile.serialize());
     }
 }

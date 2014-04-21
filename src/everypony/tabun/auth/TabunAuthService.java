@@ -9,9 +9,6 @@ import android.os.IBinder;
  */
 public class TabunAuthService extends Service {
 
-    public static final String ACCOUNT_TYPE = "everypony.tabun";
-    public static final String COOKIE_TOKEN_TYPE = "everypony.tabun.cookie";
-
     public IBinder onBind(Intent intent) {
         TabunAccountAuth auth = new TabunAccountAuth(this);
         return auth.getIBinder();
