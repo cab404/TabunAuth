@@ -97,6 +97,12 @@ public class TabunTokenGetterActivity extends Activity {
 
     }
 
+    @Override public void onBackPressed() {
+        super.onBackPressed();
+        setResult(RESULT_CANCELED);
+        finish();
+    }
+
     private class TokenGetter extends AsyncTask<Account, Void, String> {
 
         @Override protected String doInBackground(Account... accounts) {

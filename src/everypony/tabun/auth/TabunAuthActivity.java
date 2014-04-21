@@ -127,6 +127,7 @@ public class TabunAuthActivity extends Activity {
     @Override public void onBackPressed() {
         super.onBackPressed();
         setResult(RESULT_CANCELED);
+        finish();
     }
 
     private void createAccount(AuthData data) {
