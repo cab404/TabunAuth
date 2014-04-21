@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label">Табун</string>
+    <string name="account_name">everypony.tabun</string>
+
+    <string name="Auth.Username">PrincessLuna</string>
+    <string name="Auth.Password">••••••••••••</string>
+    <string name="Auth.Title">Табун</string>
+    <string name="Auth.Disclaimer">everypony.ru © Все права принадлежат пони.</string>
+    <dimen name="Auth.Title.Size">24sp</dimen>
+    <dimen name="Auth.Field.Size">16sp</dimen>
+    <dimen name="Auth.Disclaimer.Size">10sp</dimen>
+    <color name="Auth.Font.Color">#dedede</color>
+    <drawable name="Auth.BG">#323232</drawable>
+
+    <string-array name="error">
+        <item>Неправильная пара логин/пароль, ну или еще что-то.</item>
+        <item>Больше эррор-мессаджей богу эррор-мессаджей!</item>
+        <item>All your base are belong to us.</item>
+        <item>Пативены уже на подходе.</item>
+        <item>YOU SHALL NOT PASS!</item>
+        <item>Фыр-фыр-фыр!</item>
+        <item>Нету таких</item>
+        <item>Кусь!</item>
+        <item>Нит.</item>
+    </string-array>
+
+    <string-array name="success">
+        <item>Yay!</item>
+        <item>Доброго утра!</item>
+        <item>Добра и маффинов!</item>
+        <item>Credentials accepted.</item>
+        <item>Да прибудут с тобой Сёстры!</item>
+        <item>Все права всё ещё принадлежат пони!</item>
+        <item>Сезон миграции в Эквестрию уже близко!</item>
+    </string-array>
+
+</resources>

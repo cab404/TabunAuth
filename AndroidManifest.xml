@@ -9,12 +9,29 @@
     <application android:label="@string/label"
                  android:icon="@drawable/icon">
 
-        <activity android:name=".AuthActivity"
+        <activity android:name=".TabunAuthActivity"
                   android:label="@string/label"
                   android:exported="true"
                 />
 
 
+        <service
+                android:permission="android.permission.AUTHENTICATE_ACCOUNTS"
+                android:name=".TabunAuthService"
+                android:label="@string/label"
+                android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+                >
+
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator"/>
+            </intent-filter>
+
+            <meta-data
+                    android:label="@string/label"
+                    android:name="android.accounts.AccountAuthenticator"
+                    android:resource="@xml/tabun"
+                    />
+        </service>
 
     </application>
 

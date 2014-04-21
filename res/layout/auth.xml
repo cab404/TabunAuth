@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout
-        android:layout_width="fill_parent"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
         android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
         android:background="@drawable/bg">
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_centerInParent="true"
-            android:background="@drawable/Auth.BG" android:padding="8dp" android:gravity="center">
+            android:background="@drawable/Auth.BG" android:padding="8dp" android:gravity="center"
+            android:id="@+id/linearLayout">
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -20,7 +21,10 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/login" android:hint="@string/Auth.Username" android:textSize="@dimen/Auth.Field.Size"
                 android:singleLine="true" android:textColor="@color/Auth.Font.Color"
-                android:textCursorDrawable="@null"/>
+
+                tools:ignore="UnusedAttribute"
+                android:textCursorDrawable="@null"
+                />
         <EditText
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
@@ -28,7 +32,11 @@
                 android:ems="10"
                 android:id="@+id/password" android:hint="@string/Auth.Password"
                 android:textSize="@dimen/Auth.Field.Size" android:singleLine="true"
-                android:textColor="@color/Auth.Font.Color" android:textCursorDrawable="@null"/>
+                android:textColor="@color/Auth.Font.Color"
+
+                tools:ignore="UnusedAttribute"
+                android:textCursorDrawable="@null"
+                />
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -37,4 +45,11 @@
                 android:textSize="@dimen/Auth.Disclaimer.Size" android:paddingTop="8dp"
                 android:gravity="center"/>
     </LinearLayout>
+    <ProgressBar
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/indicator"
+            android:layout_above="@+id/linearLayout" android:layout_toRightOf="@+id/linearLayout"
+            android:visibility="invisible"/>
 </RelativeLayout>
