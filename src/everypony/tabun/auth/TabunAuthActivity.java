@@ -23,8 +23,6 @@ import com.cab404.moonlight.util.U;
  */
 public class TabunAuthActivity extends Activity {
 
-    public static final String LOG_TAG = "Tabun.Auth";
-
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
