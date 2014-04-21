@@ -42,5 +42,5 @@ android.library.reference.1=путь/к/папке/TabunAuth
    startActivityForResult(new Intent(this, TabunTokenGetterActivity.class), 42);
 ```
 
-В onActivityResult придёт уже проверенный токен, который можно передать в создание `AccessProfile.parseString()`.
+В onActivityResult придёт уже проверенный токен под ключом `TabunAccount.COOKIE_TOKEN_TYPE`, который можно передать в создание `AccessProfile.parseString()`.
 Он имеет вид `tabun.everypony.ru:80@Cookies`. 
