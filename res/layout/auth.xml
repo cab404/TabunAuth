@@ -18,16 +18,16 @@
                 android:textSize="@dimen/Auth.Title.Size" android:paddingBottom="8dp"/>
         <EditText
                 android:layout_width="200dp"
-                android:layout_height="wrap_content"
+                android:layout_height="36dp"
                 android:id="@+id/login" android:hint="@string/Auth.Username" android:textSize="@dimen/Auth.Field.Size"
                 android:singleLine="true" android:textColor="@color/Auth.Font.Color"
 
                 tools:ignore="UnusedAttribute"
                 android:textCursorDrawable="@null"
-                />
+                android:background="@drawable/Auth.BG" android:paddingStart="8dp"/>
         <EditText
                 android:layout_width="200dp"
-                android:layout_height="wrap_content"
+                android:layout_height="36dp"
                 android:inputType="textPassword"
                 android:ems="10"
                 android:id="@+id/password" android:hint="@string/Auth.Password"
@@ -36,7 +36,7 @@
 
                 tools:ignore="UnusedAttribute"
                 android:textCursorDrawable="@null"
-                />
+                android:background="@drawable/Auth.BG" android:paddingStart="8dp"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

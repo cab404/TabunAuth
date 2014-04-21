@@ -7,17 +7,24 @@
     <uses-sdk android:minSdkVersion="5"/>
 
     <application android:label="@string/label"
-                 android:icon="@drawable/icon">
+                 android:icon="@drawable/icon"
+            >
 
         <activity android:name=".TabunAccountSelector"
                   android:exported="true"
+                  android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
                 />
 
         <activity android:name=".TabunAuthActivity"
+                  android:exported="true"
                   android:label="@string/label"
+                  android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
                 />
 
-        <activity android:name=".TabunTokenGetterActivity"/>
+        <activity android:name=".TabunTokenGetterActivity"
+                  android:exported="true"
+                  android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+                />
 
         <service
                 android:permission="android.permission.AUTHENTICATE_ACCOUNTS"

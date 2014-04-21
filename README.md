@@ -13,12 +13,16 @@ TabunAuth
 <activity android:name="everypony.tabun.auth.TabunAccountSelector"/>
 <activity android:name="everypony.tabun.auth.TabunAuthActivity"/>
 <activity android:name="everypony.tabun.auth.TabunTokenGetterActivity"/>
-
 <service android:name="everypony.tabun.auth.TabunAuthService"
          android:permission="android.permission.AUTHENTICATE_ACCOUNTS">
     <intent-filter>
         <action android:name="android.accounts.AccountAuthenticator"/>
     </intent-filter>
+    <meta-data
+            android:label="@string/label"
+            android:name="android.accounts.AccountAuthenticator"
+            android:resource="@xml/tabun"
+            />
 </service>
 
 ```
