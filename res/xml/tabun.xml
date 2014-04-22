@@ -5,5 +5,5 @@
         android:accountType="everypony.tabun"
         android:icon="@drawable/tabun_auth_icon"
         android:smallIcon="@drawable/tabun_auth_icon"
-        android:label="@string/label"
+        android:label="@string/App.Account.Label"
         />

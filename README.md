@@ -1,46 +1,45 @@
 TabunAuth
 =========
-Библиотека интеграции аккаунтов Табуна в Android.
+Небольшое приложение, отвечающее за хранение аккаунтов Табуна.
 
 Использует libtabun, но возвращаемые ею токены можно использовать где угодно.
 
 Проверялось на Android 2.3.3, но по идее, должно работать и с Android 2.0.
 Ибо ниже просто нет аккаунтов.
 
-##Настройка проекта
-Добавьте AndroidManifest.xml в application этот кусок кода:
-
-```xml
-
-<!--Tabun.Auth-->
-<activity android:name="everypony.tabun.auth.TabunAccountSelector"/>
-<activity android:name="everypony.tabun.auth.TabunAuthActivity"/>
-<activity android:name="everypony.tabun.auth.TabunTokenGetterActivity"/>
-<service android:name="everypony.tabun.auth.TabunAuthService"
-         android:permission="android.permission.AUTHENTICATE_ACCOUNTS">
-    <intent-filter>
-        <action android:name="android.accounts.AccountAuthenticator"/>
-    </intent-filter>
-    <meta-data
-            android:label="@string/label"
-            android:name="android.accounts.AccountAuthenticator"
-            android:resource="@xml/tabun"
-            />
-</service>
-
-```
-В project.properties вашего проекта добавьте путь к папке с библиотекой:
-
-```properties
-android.library.reference.1=путь/к/папке/TabunAuth
-```
-       
 ##Использование
-Чтобы запросить токен, нужно запустить для получения результата `TabunTokenGetterActivity`:
+Чтобы запросить токен из своего приложения:
 
 ```java
-   startActivityForResult(new Intent(this, TabunTokenGetterActivity.class), 42);
+try {
+   // Запрашиваем токен
+	startActivityForResult(new Intent("everypony.tabun.auth.TOKEN_REQUEST"), TOKEN_REQUEST_CODE);
+} catch (ActivityNotFoundException e) {
+	// Нет Табун.Auth, предлагаем скачать. 
+	Intent download = new Intent(
+		Intent.ACTION_VIEW,
+		Uri.parse("https://play.google.com/store/apps/details?id=everypony.tabun.auth")
+	);
+	startActivity(download);
+   finish();
+}
 ```
 
-В onActivityResult придёт уже проверенный токен под ключом `TabunAccount.COOKIE_TOKEN_TYPE`, который можно передать в создание `AccessProfile.parseString()`.
-Он имеет вид `tabun.everypony.ru:80@Cookies`. 
+Получать токен из запроса так:
+
+```java
+@Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	super.onActivityResult(requestCode, resultCode, data);
+
+	if (requestCode == TOKEN_REQUEST_CODE){
+		if (resultCode == RESULT_OK)
+			String token = data.getStringExtra("everypony.tabun.cookie");
+			// Радоваться токену
+		if (resultCode == RESULT_CANCELED){
+			// Что-то делать, когда токен не получен.
+		}
+
+	}
+
+}
+```

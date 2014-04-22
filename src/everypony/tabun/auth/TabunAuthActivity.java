@@ -27,9 +27,9 @@ public class TabunAuthActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         if (Build.VERSION.SDK_INT >= 14)
-            setTheme(android.R.style.Theme_DeviceDefault_Light_NoActionBar);
+            setTheme(android.R.style.Theme_DeviceDefault_Light_NoActionBar_TranslucentDecor);
         else
-            setTheme(android.R.style.Theme_Light_NoTitleBar);
+            setTheme(android.R.style.Theme_Translucent_NoTitleBar);
 
         setContentView(R.layout.tabun_auth_auth);
 
@@ -91,7 +91,6 @@ public class TabunAuthActivity extends Activity {
                 return null;
 
             data.profile = new TabunAccessProfile();
-
             TabunPage page = new TabunPage();
             page.fetch(data.profile);
 

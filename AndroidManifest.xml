@@ -6,30 +6,43 @@
 
     <uses-sdk android:minSdkVersion="5"/>
 
-    <application android:label="@string/label"
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+
+    <application android:label="@string/App.Label"
+                 android:allowBackup="true"
                  android:icon="@drawable/tabun_auth_icon"
+                 android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             >
 
         <activity android:name=".TabunAccountSelector"
-                  android:exported="true"
-                  android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
                 />
 
         <activity android:name=".TabunAuthActivity"
-                  android:exported="true"
-                  android:label="@string/label"
-                  android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+                  android:label="@string/App.Account.Label"
                 />
 
         <activity android:name=".TabunTokenGetterActivity"
                   android:exported="true"
-                  android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-                />
+                >
+
+            <intent-filter>
+                <action android:name="everypony.tabun.auth.TOKEN_REQUEST"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+
+        </activity>
 
         <service
                 android:permission="android.permission.AUTHENTICATE_ACCOUNTS"
                 android:name=".TabunAuthService"
-                android:label="@string/label"
+                android:label="@string/App.Account.Label"
                 android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
                 >
 
@@ -38,7 +51,7 @@
             </intent-filter>
 
             <meta-data
-                    android:label="@string/label"
+                    android:label="@string/App.Account.Label"
                     android:name="android.accounts.AccountAuthenticator"
                     android:resource="@xml/tabun"
                     />
