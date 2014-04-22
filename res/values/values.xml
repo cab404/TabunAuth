@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="label">Табун</string>
-    <string name="account_name">everypony.tabun</string>
+    <string name="App.Account.Label">Табун</string>
+    <string name="App.Label">Табун.Auth</string>
+    <string name="App.Account.InternalName">everypony.tabun</string>
 
     <string name="Auth.Username">PrincessLuna</string>
     <string name="Auth.Password">••••••••••••</string>

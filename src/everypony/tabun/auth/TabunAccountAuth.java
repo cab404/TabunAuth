@@ -75,6 +75,7 @@ public class TabunAccountAuth extends AbstractAccountAuthenticator {
         if (man == null)
             throw new RuntimeException("Account manager is unavailable!");
 
+
         String token = man.getUserData(account, TabunAccount.COOKIE_TOKEN_TYPE);
 
         if (!TextUtils.isEmpty(token)) {

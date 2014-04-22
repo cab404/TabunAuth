@@ -91,7 +91,6 @@ public class TabunAuthActivity extends Activity {
                 return null;
 
             data.profile = new TabunAccessProfile();
-
             TabunPage page = new TabunPage();
             page.fetch(data.profile);
 
