@@ -7,7 +7,7 @@
     <uses-sdk android:minSdkVersion="5"/>
 
     <application android:label="@string/label"
-                 android:icon="@drawable/icon"
+                 android:icon="@drawable/tabun_auth_icon"
             >
 
         <activity android:name=".TabunAccountSelector"

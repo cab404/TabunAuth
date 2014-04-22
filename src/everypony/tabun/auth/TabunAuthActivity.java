@@ -31,7 +31,7 @@ public class TabunAuthActivity extends Activity {
         else
             setTheme(android.R.style.Theme_Light_NoTitleBar);
 
-        setContentView(R.layout.auth);
+        setContentView(R.layout.tabun_auth_auth);
 
         ((EditText) findViewById(R.id.password)).setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override public boolean onEditorAction(TextView password, int actionId, KeyEvent keyEvent) {

@@ -3,7 +3,7 @@
 <RelativeLayout
         xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
         android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
-        android:background="@drawable/bg">
+        android:background="@drawable/tabun_auth_bg">
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"

@@ -30,7 +30,7 @@ public class TabunTokenGetterActivity extends Activity {
         else
             setTheme(android.R.style.Theme_Translucent_NoTitleBar);
 
-        setContentView(R.layout.loading_layout);
+        setContentView(R.layout.tabun_auth_loading_layout);
 
         ConnectivityManager activeNetworkInfo = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         if (activeNetworkInfo.getActiveNetworkInfo() == null || !activeNetworkInfo.getActiveNetworkInfo().isAvailable()) {

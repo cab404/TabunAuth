@@ -3,7 +3,7 @@
 <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
-        android:background="@drawable/bg">
+        android:background="@drawable/tabun_auth_bg">
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
@@ -26,8 +26,8 @@
                 android:dividerPadding="64dp">
             <include android:layout_width="match_parent"
                      android:layout_height="48dp"
-                     layout="@layout/account_label"/>
-            <include layout="@layout/account_label" android:layout_width="match_parent" android:layout_height="48dp"
+                     layout="@layout/tabun_auth_account_label"/>
+            <include layout="@layout/tabun_auth_account_label" android:layout_width="match_parent" android:layout_height="48dp"
                      android:id="@+id/include"/>
         </LinearLayout>
         <TextView

@@ -2,7 +2,7 @@
 
 <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent"
                 xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/relativeLayout"
-                android:background="@drawable/bg">
+                android:background="@drawable/tabun_auth_bg">
     <ProgressBar style="?android:attr/progressBarStyleLarge" android:layout_width="wrap_content"
                  android:layout_height="wrap_content" android:id="@+id/progress"
                  android:layout_gravity="center_horizontal" android:layout_centerVertical="true"
@@ -12,5 +12,5 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:id="@+id/icon" android:layout_centerVertical="true" android:layout_centerHorizontal="true"
-            android:src="@drawable/icon"/>
+            android:src="@drawable/tabun_auth_icon"/>
 </RelativeLayout>

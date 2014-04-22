@@ -25,7 +25,7 @@ public class TabunAccountSelector extends Activity {
         else
             setTheme(android.R.style.Theme_Light_NoTitleBar);
 
-        setContentView(R.layout.selector);
+        setContentView(R.layout.tabun_auth_selector);
 
         AccountManager manager = AccountManager.get(this);
         assert manager != null;
@@ -35,7 +35,7 @@ public class TabunAccountSelector extends Activity {
         list.removeAllViews();
 
         for (final Account account : manager.getAccountsByType(TabunAccount.TYPE)) {
-            View label = getLayoutInflater().inflate(R.layout.account_label, list, false);
+            View label = getLayoutInflater().inflate(R.layout.tabun_auth_account_label, list, false);
             assert label != null;
             ((TextView) label.findViewById(R.id.username)).setText(account.name);
 
