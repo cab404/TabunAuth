@@ -24,7 +24,6 @@ public class TabunTokenGetterActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         if (Build.VERSION.SDK_INT >= 14)
             setTheme(android.R.style.Theme_DeviceDefault_Light_NoActionBar_TranslucentDecor);
         else

@@ -19,11 +19,10 @@ public class TabunAccountSelector extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         if (Build.VERSION.SDK_INT >= 14)
-            setTheme(android.R.style.Theme_DeviceDefault_Light_NoActionBar);
+            setTheme(android.R.style.Theme_DeviceDefault_Light_NoActionBar_TranslucentDecor);
         else
-            setTheme(android.R.style.Theme_Light_NoTitleBar);
+            setTheme(android.R.style.Theme_Translucent_NoTitleBar);
 
         setContentView(R.layout.tabun_auth_selector);
 
