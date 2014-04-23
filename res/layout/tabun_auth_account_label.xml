@@ -7,7 +7,7 @@
     <ImageView
             android:layout_width="@dimen/Auth.Field.Size"
             android:layout_height="@dimen/Auth.Field.Size"
-            android:id="@+id/radio" android:src="@drawable/tabun_auth_icon" android:layout_centerVertical="true"
+            android:id="@+id/radio" android:src="@drawable/ic_launcher" android:layout_centerVertical="true"
             android:layout_alignParentLeft="true" android:layout_marginLeft="8dp"
             android:layout_marginRight="2dp"/>
     <TextView

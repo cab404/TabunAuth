@@ -3,7 +3,6 @@
 <account-authenticator
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:accountType="everypony.tabun"
-        android:icon="@drawable/tabun_auth_icon"
-        android:smallIcon="@drawable/tabun_auth_icon"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/App.Account.Label"
         />
