@@ -2,6 +2,11 @@
 <resources>
     <string name="App.Account.Label">Табун</string>
     <string name="App.Label">Табун.Auth</string>
+
+    <string name="App.Account.Permission.Label">Запрашивать токены аутентификации Табуна</string>
+    <string name="App.Account.Permission.Desc">
+        Приложение сможет использовать ваш аккаунт Табуна, писать комментарии, посты и письма, но не сможет видеть или изменять пароль.
+    </string>
     <string name="App.Account.InternalName">everypony.tabun</string>
 
     <string name="Auth.Username">PrincessLuna</string>
