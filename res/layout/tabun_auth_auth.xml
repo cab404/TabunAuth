@@ -8,13 +8,13 @@
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_centerInParent="true"
-            android:background="@drawable/Auth.BG" android:padding="8dp" android:gravity="center"
+            android:background="@drawable/Auth.BG" android:padding="16dp" android:gravity="center"
             android:id="@+id/linearLayout">
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Auth.Title"
-                android:id="@+id/title" android:textColor="@color/Auth.Font.Color"
+                android:textColor="@color/Auth.Font.Color"
                 android:textSize="@dimen/Auth.Title.Size" android:paddingBottom="8dp"/>
         <EditText
                 android:layout_width="200dp"
@@ -37,11 +37,34 @@
                 tools:ignore="UnusedAttribute"
                 android:textCursorDrawable="@null"
                 android:background="@drawable/Auth.BG" android:paddingStart="8dp"/>
-        <TextView
+	    <LinearLayout
+			    android:orientation="horizontal"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_gravity="center"
+			    android:gravity="center">
+		    <CheckBox
+				    android:layout_width="0dp"
+				    android:layout_height="wrap_content"
+				    android:text="@string/Auth.ShowPwd"
+				    android:id="@+id/show_pwd"
+				    android:textSize="@dimen/Auth.Disclaimer.Size"
+				    android:layout_weight="1"
+				    android:onClick="show_pwd"
+				    android:textColor="@color/Auth.Font.Color"/>
+		    <Button
+				    style="?android:attr/buttonStyleSmall"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="@string/Auth.Enter"
+				    android:id="@+id/button"
+				    android:onClick="enter"/>
+	    </LinearLayout>
+	    <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Auth.Disclaimer"
-                android:id="@+id/textView" android:textColor="@color/Auth.Font.Color"
+                android:textColor="@color/Auth.Font.Color"
                 android:textSize="@dimen/Auth.Disclaimer.Size" android:paddingTop="8dp"
                 android:gravity="center"/>
     </LinearLayout>

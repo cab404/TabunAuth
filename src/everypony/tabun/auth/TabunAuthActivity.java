@@ -6,14 +6,14 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.cab404.libtabun.pages.TabunPage;
-import com.cab404.libtabun.requests.LoginRequest;
 import com.cab404.libtabun.util.TabunAccessProfile;
 import com.cab404.moonlight.framework.AccessProfile;
 import com.cab404.moonlight.util.U;
@@ -23,119 +23,131 @@ import com.cab404.moonlight.util.U;
  */
 public class TabunAuthActivity extends Activity {
 
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-        if (Build.VERSION.SDK_INT >= 14)
-            setTheme(android.R.style.Theme_DeviceDefault_Light_NoActionBar_TranslucentDecor);
-        else
-            setTheme(android.R.style.Theme_Translucent_NoTitleBar);
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.tabun_auth_auth);
+		if (Build.VERSION.SDK_INT >= 14)
+			setTheme(android.R.style.Theme_DeviceDefault_Light_NoActionBar_TranslucentDecor);
+		else
+			setTheme(android.R.style.Theme_Translucent_NoTitleBar);
 
-        ((EditText) findViewById(R.id.password)).setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override public boolean onEditorAction(TextView password, int actionId, KeyEvent keyEvent) {
-                if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_UNSPECIFIED) {
-                    EditText login = (EditText) findViewById(R.id.login);
 
-                    setLoading(true);
-                    login(String.valueOf(login.getText()), String.valueOf(password.getText()));
-                }
+		setContentView(R.layout.tabun_auth_auth);
 
-                return false;
-            }
-        });
-    }
+		((EditText) findViewById(R.id.password)).setOnEditorActionListener(new TextView.OnEditorActionListener() {
+			@Override public boolean onEditorAction(TextView password, int actionId, KeyEvent keyEvent) {
+				if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_UNSPECIFIED)
+					enter(null);
+				return false;
+			}
+		});
+	}
 
-    protected void login(String login, String password) {
-        new AuthTask().execute(new AuthData(login, password));
-    }
+	public void enter(View view) {
+		EditText login = (EditText) findViewById(R.id.login);
+		EditText password = (EditText) findViewById(R.id.password);
 
-    protected void setLoading(boolean loading) {
-        findViewById(R.id.login).setEnabled(!loading);
-        findViewById(R.id.password).setEnabled(!loading);
-        findViewById(R.id.indicator).setVisibility(loading ? View.VISIBLE : View.INVISIBLE);
-    }
+		setLoading(true);
+		login(String.valueOf(login.getText()), String.valueOf(password.getText()));
+	}
 
-    protected void throwError() {
-        String[] messages = getResources().getStringArray(R.array.error);
-        String message = messages[((int) (messages.length * Math.random()))];
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-    }
+	public void show_pwd(View view) {
+		EditText password = (EditText) findViewById(R.id.password);
+		if (((CheckBox) view).isChecked())
+			password.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD | InputType.TYPE_CLASS_TEXT);
+		else
+			password.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD | InputType.TYPE_CLASS_TEXT);
+	}
 
-    protected void throwSuccess() {
-        String[] messages = getResources().getStringArray(R.array.success);
-        String message = messages[((int) (messages.length * Math.random()))];
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-    }
+	protected void login(String login, String password) {
+		new AuthTask().execute(new AuthData(login, password));
+	}
 
-    private class AuthData {
-        String login, password;
-        AccessProfile profile;
+	protected void setLoading(boolean loading) {
+		findViewById(R.id.login).setEnabled(!loading);
+		findViewById(R.id.password).setEnabled(!loading);
+		findViewById(R.id.indicator).setVisibility(loading ? View.VISIBLE : View.INVISIBLE);
+	}
 
-        public AuthData(String login, String password) {
-            this.login = login;
-            this.password = password;
-        }
-    }
+	protected void throwError() {
+		String[] messages = getResources().getStringArray(R.array.error);
+		String message = messages[((int) (messages.length * Math.random()))];
+		Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+	}
 
-    private class AuthTask extends AsyncTask<AuthData, Void, AccessProfile> {
+	protected void throwSuccess() {
+		String[] messages = getResources().getStringArray(R.array.success);
+		String message = messages[((int) (messages.length * Math.random()))];
+		Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+	}
 
-        private AuthData data;
-        @Override protected AccessProfile doInBackground(AuthData... authData) {
-            data = authData[0];
+	private class AuthData {
+		String login, password;
+		TabunAccessProfile profile;
 
-            if (data.login == null || data.login.length() == 0)
-                return null;
-            if (data.password == null || data.password.length() == 0)
-                return null;
+		public AuthData(String login, String password) {
+			this.login = login;
+			this.password = password;
+		}
+	}
 
-            data.profile = new TabunAccessProfile();
-            TabunPage page = new TabunPage();
-            page.fetch(data.profile);
+	private class AuthTask extends AsyncTask<AuthData, Void, AccessProfile> {
 
-            LoginRequest login = new LoginRequest(data.login, data.password);
-            try {
-                login.exec(data.profile, page);
-            } catch (Exception e) {
-                U.w(e);
-                return null;
-            }
+		private AuthData data;
+		@Override protected AccessProfile doInBackground(AuthData... authData) {
+			data = authData[0];
 
-            if (login.success())
-                return data.profile;
-            else
-                return null;
-        }
+			if (data.login == null || data.login.length() == 0)
+				return null;
+			if (data.password == null || data.password.length() == 0)
+				return null;
 
-        @Override protected void onPostExecute(AccessProfile profile) {
-            if (profile == null) {
-                setLoading(false);
-                throwError();
-            } else {
-                throwSuccess();
-                createAccount(data);
-                setResult(RESULT_OK);
-                finish();
-            }
-            super.onPostExecute(profile);
-        }
+			data.profile = new TabunAccessProfile();
 
-    }
+			boolean success;
+			try {
+				success = data.profile.login(data.login, data.password);
+			} catch (Exception e) {
+				success = false;
+				U.w(e);
+				return null;
+			}
 
-    @Override public void onBackPressed() {
-        super.onBackPressed();
-        setResult(RESULT_CANCELED);
-        finish();
-    }
+			if (success)
+				return data.profile;
+			else
+				return null;
+		}
 
-    private void createAccount(AuthData data) {
-        AccountManager man = AccountManager.get(getBaseContext());
-        if (man == null)
-            throw new RuntimeException("Account manager is unavailable!");
+		@Override protected void onPostExecute(AccessProfile profile) {
+			if (profile == null) {
+				setLoading(false);
+				throwError();
+			} else {
+				throwSuccess();
+				createAccount(data);
+				setResult(RESULT_OK);
+				finish();
+			}
+			super.onPostExecute(profile);
+		}
 
-        Account account = new Account(data.login, TabunAccount.TYPE);
-        man.addAccountExplicitly(account, data.password, null);
-        man.setAuthToken(account, TabunAccount.COOKIE_TOKEN_TYPE, data.profile.serialize());
-    }
+	}
+
+	@Override public void onBackPressed() {
+		super.onBackPressed();
+		setResult(RESULT_CANCELED);
+		finish();
+	}
+
+	private void createAccount(AuthData data) {
+		AccountManager man = AccountManager.get(getBaseContext());
+		if (man == null)
+			throw new RuntimeException("Account manager is unavailable!");
+
+		Account account = new Account(data.login, TabunAccount.TYPE);
+		man.addAccountExplicitly(account, data.password, null);
+		man.setAuthToken(account, TabunAccount.COOKIE_TOKEN_TYPE, data.profile.serialize());
+	}
 }

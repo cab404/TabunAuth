@@ -13,6 +13,8 @@
     <string name="Auth.Password">••••••••••••</string>
     <string name="Auth.Title">Табун</string>
     <string name="Auth.Disclaimer">everypony.ru © Все права принадлежат пони.</string>
+    <string name="Auth.ShowPwd">Показывать пароль</string>
+    <string name="Auth.Enter">Войти</string>
     <dimen name="Auth.Title.Size">24sp</dimen>
     <dimen name="Auth.Field.Size">16sp</dimen>
     <dimen name="Auth.Disclaimer.Size">10sp</dimen>

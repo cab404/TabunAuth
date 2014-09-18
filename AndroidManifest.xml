@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="everypony.tabun.auth"
-          android:versionCode="3"
-          android:versionName="0.0.3">
+          android:versionCode="4"
+          android:versionName="0.1.0">
 
     <uses-sdk android:minSdkVersion="5" android:targetSdkVersion="19"/>
 
@@ -14,11 +14,11 @@
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
 
-    <permission android:name="everypony.tabun.REQUEST_AUTH_TOKEN"
-                android:label="@string/App.Account.Permission.Label"
-                android:description="@string/App.Account.Permission.Desc"
-                android:protectionLevel="normal"
-            />
+    <!--<permission android:name="everypony.tabun.REQUEST_AUTH_TOKEN"-->
+                <!--android:label="@string/App.Account.Permission.Label"-->
+                <!--android:description="@string/App.Account.Permission.Desc"-->
+                <!--android:protectionLevel="normal"-->
+            <!--/>-->
 
     <application android:label="@string/App.Label"
                  android:allowBackup="true"
@@ -37,8 +37,8 @@
 
         <activity android:name=".TabunTokenGetterActivity"
                   android:exported="true"
-                  android:permission="everypony.tabun.REQUEST_AUTH_TOKEN"
                 >
+                  <!--android:permission="everypony.tabun.REQUEST_AUTH_TOKEN"-->
 
             <intent-filter>
                 <action android:name="everypony.tabun.auth.TOKEN_REQUEST"/>
