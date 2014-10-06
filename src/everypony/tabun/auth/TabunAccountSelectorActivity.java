@@ -13,8 +13,7 @@ import android.widget.TextView;
 /**
  * @author cab404
  */
-public class TabunAccountSelector extends Activity {
-    public static final String ACCOUNT = "account";
+public class TabunAccountSelectorActivity extends Activity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +21,7 @@ public class TabunAccountSelector extends Activity {
         if (Build.VERSION.SDK_INT >= 14)
             setTheme(android.R.style.Theme_DeviceDefault_Light_NoActionBar_TranslucentDecor);
         else
-            setTheme(android.R.style.Theme_Translucent_NoTitleBar);
+            setTheme(android.R.style.Theme_NoTitleBar);
 
         setContentView(R.layout.tabun_auth_selector);
 

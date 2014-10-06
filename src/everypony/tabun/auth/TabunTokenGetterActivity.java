@@ -90,7 +90,7 @@ public class TabunTokenGetterActivity extends Activity {
 		}
 
 		if (accounts.length > 1) {
-			Intent select = new Intent(this, TabunAccountSelector.class);
+			Intent select = new Intent(this, TabunAccountSelectorActivity.class);
 			startActivityForResult(select, SELECTION_REQ);
 		}
 

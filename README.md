@@ -43,8 +43,3 @@ try {
 
 }
 ```
-
-Приложение должно запрашивать разрешение `everypony.tabun.REQUEST_AUTH_TOKEN`:
-```xml
-<uses-permission android:name="everypony.tabun.REQUEST_AUTH_TOKEN"/>
-```

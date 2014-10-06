@@ -14,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.cab404.libtabun.requests.LoginRequest;
 import com.cab404.libtabun.util.TabunAccessProfile;
 import com.cab404.moonlight.framework.AccessProfile;
 import com.cab404.moonlight.util.U;
@@ -90,6 +91,7 @@ public class TabunAuthActivity extends Activity {
 			this.login = login;
 			this.password = password;
 		}
+
 	}
 
 	private class AuthTask extends AsyncTask<AuthData, Void, AccessProfile> {
@@ -107,9 +109,14 @@ public class TabunAuthActivity extends Activity {
 
 			boolean success;
 			try {
-				success = data.profile.login(data.login, data.password);
+				LoginRequest login = new LoginRequest(data.login, data.password) {
+					@Override protected void onRedirect(String to) {
+						super.onRedirect(to);
+						throw new RuntimeException("REDIRECTED TO " + to);
+					}
+				};
+				success = login.exec(data.profile).success();
 			} catch (Exception e) {
-				success = false;
 				U.w(e);
 				return null;
 			}

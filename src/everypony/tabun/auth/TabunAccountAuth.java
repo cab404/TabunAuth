@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.cab404.libtabun.pages.TabunPage;
+import com.cab404.libtabun.requests.LoginRequest;
 import com.cab404.libtabun.util.TabunAccessProfile;
 import com.cab404.moonlight.framework.AccessProfile;
 import com.cab404.moonlight.util.U;
@@ -106,7 +107,13 @@ public class TabunAccountAuth extends AbstractAccountAuthenticator {
 
 			boolean success;
 			try {
-				success = profile.login(account.name, password);
+				LoginRequest login = new LoginRequest(account.name, password) {
+					@Override protected void onRedirect(String to) {
+						super.onRedirect(to);
+						throw new RuntimeException("REDIRECTED TO " + to);
+					}
+				};
+				success = login.exec(profile).success();
 			} catch (Exception e) {
 				success = false;
 			}
