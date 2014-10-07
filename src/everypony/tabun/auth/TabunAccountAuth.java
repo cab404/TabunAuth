@@ -102,11 +102,12 @@ public class TabunAccountAuth extends AbstractAccountAuthenticator {
 
 			TabunAccessProfile profile = new TabunAccessProfile();
 
-			TabunPage page = new TabunPage();
-			page.fetch(profile);
-
 			boolean success;
 			try {
+
+				TabunPage page = new TabunPage();
+				page.fetch(profile);
+
 				LoginRequest login = new LoginRequest(account.name, password) {
 					@Override protected void onRedirect(String to) {
 						super.onRedirect(to);
