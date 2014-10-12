@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -14,6 +15,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.cab404.libtabun.pages.TabunPage;
+import com.cab404.libtabun.requests.LSRequest;
 import com.cab404.libtabun.requests.LoginRequest;
 import com.cab404.libtabun.util.TabunAccessProfile;
 import com.cab404.moonlight.framework.AccessProfile;
@@ -109,6 +112,9 @@ public class TabunAuthActivity extends Activity {
 
 			boolean success;
 			try {
+				if (!data.profile.cookies.containsKey(LSRequest.LS_KEY_ENTRY))
+					new TabunPage().fetch(data.profile);
+
 				LoginRequest login = new LoginRequest(data.login, data.password) {
 					@Override protected void onRedirect(String to) {
 						super.onRedirect(to);
@@ -121,10 +127,12 @@ public class TabunAuthActivity extends Activity {
 				return null;
 			}
 
-			if (success)
+			if (success) {
 				return data.profile;
-			else
+			} else {
+				Log.v("err", "asdf");
 				return null;
+			}
 		}
 
 		@Override protected void onPostExecute(AccessProfile profile) {
