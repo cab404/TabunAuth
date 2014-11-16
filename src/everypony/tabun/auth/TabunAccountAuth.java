@@ -135,7 +135,7 @@ public class TabunAccountAuth extends AbstractAccountAuthenticator {
 				String message = array[((int) (array.length * Math.random()))];
 				result.putString(AccountManager.KEY_ERROR_MESSAGE, message);
 
-				man.removeAccount(account, null, null);
+//				man.removeAccount(account, null, null);
 
 				return result;
 
@@ -158,6 +158,7 @@ public class TabunAccountAuth extends AbstractAccountAuthenticator {
 		intent.putExtra(AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE, aar);
 		options = options == null ? new Bundle() : options;
 		options.putParcelable(AccountManager.KEY_INTENT, intent);
+
 		return options;
 	}
 
