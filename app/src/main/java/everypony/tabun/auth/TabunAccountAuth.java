@@ -55,8 +55,6 @@ public class TabunAccountAuth extends AbstractAccountAuthenticator {
 	throws NetworkErrorException {
 		LogBus.log("add()");
 
-		U.v(options);
-
 		Intent intent = new Intent(context, TabunAuthActivity.class);
 		intent.putExtra(AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE, aar);
 

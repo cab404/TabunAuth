@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="everypony.tabun.auth"
+    android:versionCode="10"
+    android:versionName="0.1.6">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+
+    <!--<permission android:name="everypony.tabun.REQUEST_AUTH_TOKEN"-->
+    <!--android:label="@string/App.Account.Permission.Label"-->
+    <!--android:description="@string/App.Account.Permission.Desc"-->
+    <!--android:protectionLevel="normal"-->
+    <!--/>-->
+
+    <application
+        android:allowBackup="true"
+        android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+        android:exported="false"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/App.Label">
+
+        <activity android:name=".TabunAccountSelectorActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            />
+
+        <activity
+            android:name=".TabunAuthActivity"
+            android:exported="false"
+            android:label="@string/App.Account.Label"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            />
+
+        <activity
+            android:name=".TabunTokenGetterActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:exported="true">
+            <!--android:permission="everypony.tabun.REQUEST_AUTH_TOKEN"-->
+
+            <intent-filter>
+                <action android:name="everypony.tabun.auth.TOKEN_REQUEST" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+
+        </activity>
+
+        <service
+            android:name=".TabunAuthService"
+            android:exported="false"
+            android:label="@string/App.Account.Label"
+            android:permission="android.permission.AUTHENTICATE_ACCOUNTS">
+
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:label="@string/App.Account.Label"
+                android:resource="@xml/tabun" />
+        </service>
+
+    </application>
+
+</manifest>

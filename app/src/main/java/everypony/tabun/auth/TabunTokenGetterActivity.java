@@ -44,7 +44,7 @@ public class TabunTokenGetterActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		LogBus.reg(log_handler);
 
-		if (Build.VERSION.SDK_INT >= 14)
+		if (Build.VERSION.SDK_INT >= 19)
 			setTheme(android.R.style.Theme_DeviceDefault_Light_NoActionBar_TranslucentDecor);
 		else
 			setTheme(android.R.style.Theme_Translucent_NoTitleBar);
@@ -62,7 +62,6 @@ public class TabunTokenGetterActivity extends Activity {
 		}
 
 		man = AccountManager.get(this);
-		assert man != null;
 
 		valve();
 	}
